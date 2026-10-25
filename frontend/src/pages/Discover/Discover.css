@@ -1,0 +1,467 @@
+/* ========================================
+   DISCOVER PAGE
+======================================== */
+
+.discover-page {
+  width: 100%;
+  min-height: calc(100vh - 72px);
+
+  padding: 72px 7% 90px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(121, 87, 232, 0.1),
+      transparent 30%
+    ),
+    #0e1015;
+
+  color: #ffffff;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.discover-header {
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto 42px;
+}
+
+.discover-eyebrow {
+  margin: 0 0 10px;
+
+  color: #9d7cff;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+}
+
+.discover-header h1 {
+  margin: 0;
+
+  font-size: clamp(
+    2.4rem,
+    5vw,
+    4rem
+  );
+
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.discover-subtitle {
+  max-width: 650px;
+
+  margin: 14px 0 0;
+
+  color: #a5a9b5;
+
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ========================================
+   SEARCH
+======================================== */
+
+.discover-tools {
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto 36px;
+}
+
+.discover-search {
+  position: relative;
+
+  width: 100%;
+  max-width: 620px;
+}
+
+.discover-search .search-icon {
+  position: absolute;
+
+  top: 50%;
+  left: 17px;
+
+  z-index: 2;
+
+  transform: translateY(-50%);
+
+  font-size: 1rem;
+
+  pointer-events: none;
+}
+
+.discover-search input {
+  width: 100%;
+  height: 52px;
+
+  padding:
+    0 48px
+    0 48px;
+
+  border: 1px solid #30333d;
+  border-radius: 12px;
+
+  outline: none;
+
+  background: #171920;
+  color: #ffffff;
+
+  font-size: 0.95rem;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.discover-search input::placeholder {
+  color: #747985;
+}
+
+.discover-search input:hover {
+  border-color: #414550;
+}
+
+.discover-search input:focus {
+  border-color: #7957e8;
+
+  background: #191b23;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(121, 87, 232, 0.14);
+}
+
+.clear-search-button {
+  position: absolute;
+
+  top: 50%;
+  right: 12px;
+
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: translateY(-50%);
+
+  border: none;
+  border-radius: 50%;
+
+  background: transparent;
+  color: #8e929e;
+
+  font-size: 1.25rem;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.clear-search-button:hover {
+  background: #292c35;
+  color: #ffffff;
+}
+
+/* ========================================
+   GENRES
+======================================== */
+
+.genre-section {
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto 46px;
+}
+
+.genre-header {
+  margin-bottom: 18px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.genre-header h2 {
+  margin: 0;
+
+  font-size: 1.25rem;
+}
+
+.genre-header span {
+  color: #858a96;
+
+  font-size: 0.85rem;
+}
+
+.genre-filters {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+.genre-button {
+  min-height: 42px;
+
+  padding: 9px 18px;
+
+  border: 1px solid #30333d;
+  border-radius: 999px;
+
+  background: #171920;
+  color: #aeb2bd;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.genre-button:hover {
+  border-color: #6551ad;
+
+  color: #ffffff;
+
+  transform: translateY(-1px);
+}
+
+.genre-button.active {
+  border-color: #7957e8;
+
+  background: #7957e8;
+  color: #ffffff;
+}
+
+/* ========================================
+   RESULTS HEADER
+======================================== */
+
+.discover-results-header {
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto 22px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.discover-results-header h2 {
+  margin: 0 0 5px;
+
+  font-size: 1.55rem;
+  line-height: 1.2;
+}
+
+.discover-results-header p {
+  margin: 0;
+
+  color: #858a96;
+
+  font-size: 0.88rem;
+}
+
+/* ========================================
+   GAME GRID
+======================================== */
+
+.discover-grid {
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 24px;
+}
+
+/* ========================================
+   LOADING / ERROR / EMPTY
+======================================== */
+
+.discover-state {
+  width: 100%;
+  max-width: 1400px;
+
+  min-height: 300px;
+
+  margin: 0 auto;
+  padding: 60px 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px dashed #343743;
+  border-radius: 18px;
+
+  background: #15171d;
+
+  text-align: center;
+}
+
+.discover-state h2 {
+  margin: 0 0 10px;
+}
+
+.discover-state p {
+  max-width: 500px;
+
+  margin: 0;
+
+  color: #9297a3;
+
+  line-height: 1.6;
+}
+
+.discover-empty-icon {
+  margin-bottom: 18px;
+
+  font-size: 3rem;
+}
+
+/* ========================================
+   LOADER
+======================================== */
+
+.discover-loader {
+  width: 38px;
+  height: 38px;
+
+  margin-bottom: 18px;
+
+  border: 4px solid #292c35;
+  border-top-color: #7957e8;
+  border-radius: 50%;
+
+  animation:
+    discover-spin 0.8s linear infinite;
+}
+
+@keyframes discover-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+   RESET BUTTON
+======================================== */
+
+.reset-discover-button {
+  margin-top: 22px;
+
+  padding: 11px 18px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #7957e8;
+  color: #ffffff;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.reset-discover-button:hover {
+  background: #8a6af0;
+
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1200px) {
+  .discover-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .discover-page {
+    padding:
+      56px 5%
+      70px;
+  }
+
+  .discover-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .discover-page {
+    padding-top: 42px;
+  }
+
+  .discover-header {
+    margin-bottom: 32px;
+  }
+
+  .discover-tools {
+    margin-bottom: 30px;
+  }
+
+  .genre-header {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 6px;
+  }
+
+  .genre-filters {
+    gap: 8px;
+  }
+
+  .genre-button {
+    min-height: 38px;
+
+    padding: 8px 14px;
+
+    font-size: 0.82rem;
+  }
+
+  .discover-grid {
+    grid-template-columns: 1fr;
+  }
+}
