@@ -1,7 +1,48 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+
+import GameCard from '../../components/GameCard/GameCard'
+import { getGames } from '../../services/gameApi'
+
 import './Home.css'
 
 function Home() {
+  const [popularGames, setPopularGames] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    let isMounted = true
+
+    async function loadPopularGames() {
+      try {
+        setLoading(true)
+        setError('')
+
+        const games = await getGames()
+
+        if (isMounted) {
+          setPopularGames(games.slice(0, 4))
+        }
+      } catch (err) {
+        console.error('Failed to load popular games:', err)
+
+        if (isMounted) {
+          setError('Unable to load popular games right now.')
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false)
+        }
+      }
+    }
+
+    loadPopularGames()
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
   return (
     <main className="home">
@@ -46,23 +87,31 @@ function Home() {
           </Link>
         </div>
 
-        <div className="game-grid">
-          <div className="game-card-placeholder">
-            <span>Game Cover</span>
+        {loading ? (
+          <div className="game-grid">
+            {Array.from({ length: 4 }).map((_, index) => (
+              <div
+                key={index}
+                className="game-card-placeholder"
+              >
+                <span>Loading...</span>
+              </div>
+            ))}
           </div>
-
-          <div className="game-card-placeholder">
-            <span>Game Cover</span>
+        ) : error ? (
+          <p>{error}</p>
+        ) : popularGames.length > 0 ? (
+          <div className="game-grid">
+            {popularGames.map((game) => (
+              <GameCard
+                key={game.id}
+                game={game}
+              />
+            ))}
           </div>
-
-          <div className="game-card-placeholder">
-            <span>Game Cover</span>
-          </div>
-
-          <div className="game-card-placeholder">
-            <span>Game Cover</span>
-          </div>
-        </div>
+        ) : (
+          <p>No popular games found.</p>
+        )}
       </section>
     </main>
   )
