@@ -44,6 +44,9 @@ function Home() {
     }
   }, [])
 
+  const showPlaceholders =
+    loading || error || popularGames.length === 0
+
   return (
     <main className="home">
       <section className="hero">
@@ -87,31 +90,31 @@ function Home() {
           </Link>
         </div>
 
-        {loading ? (
-          <div className="game-grid">
-            {Array.from({ length: 4 }).map((_, index) => (
-              <div
-                key={index}
-                className="game-card-placeholder"
-              >
-                <span>Loading...</span>
-              </div>
-            ))}
-          </div>
-        ) : error ? (
-          <p>{error}</p>
-        ) : popularGames.length > 0 ? (
-          <div className="game-grid">
-            {popularGames.map((game) => (
-              <GameCard
-                key={game.id}
-                game={game}
-              />
-            ))}
-          </div>
-        ) : (
-          <p>No popular games found.</p>
+        {error && (
+          <p className="popular-error">
+            {error}
+          </p>
         )}
+
+        <div className="game-grid">
+          {showPlaceholders
+            ? Array.from({ length: 4 }).map((_, index) => (
+                <div
+                  key={index}
+                  className="game-card-placeholder"
+                >
+                  <span>
+                    {loading ? 'Loading...' : 'Game Cover'}
+                  </span>
+                </div>
+              ))
+            : popularGames.map((game) => (
+                <GameCard
+                  key={game.id}
+                  game={game}
+                />
+              ))}
+        </div>
       </section>
     </main>
   )
