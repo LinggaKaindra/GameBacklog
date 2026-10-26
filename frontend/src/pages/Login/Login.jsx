@@ -35,7 +35,7 @@ function Login() {
 
   const destination =
     location.state?.from?.pathname ||
-    '/library'
+    '/'
 
   async function handleSubmit(
     event
